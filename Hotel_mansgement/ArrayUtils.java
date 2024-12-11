@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class ArrayUtils {
     public static int findCustomerByRoomId()
     {
-        int iForReturn=0;
+        int iForReturn=-1;
         Scanner scanner=new Scanner(System.in);
         System.out.println("房间号");
         //判断是否存在
@@ -23,7 +23,7 @@ public class ArrayUtils {
 
         }
         if(flag){
-                System.out.println("请输入正确的房间号");
+                System.out.println("查无此人");
         }
        return iForReturn;
     }
@@ -46,7 +46,7 @@ public class ArrayUtils {
 
         }
         if(flag){
-            System.out.println("请输入正确的姓名");
+            System.out.println("查无此人");
         }
     }
     public static void findCustomerByIdNumber()
@@ -66,7 +66,7 @@ public class ArrayUtils {
 
         }
         if(flag){
-            System.out.println("请输入正确的身份证号");
+            System.out.println("查无此人");
 
         }
     }
