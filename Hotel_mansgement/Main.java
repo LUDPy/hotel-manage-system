@@ -61,15 +61,13 @@ public class Main {
         System.out.println("添加成功");
     }
     public static void modify() {
-        //过房间号，查询到当前Customer顾客信息，所在对象数组中的索引，重新录入信息(需要添加一个工具类)ArrayUtils，
-        // findCustomerByRoomId(数组，roomId,count),找到索引
         while(true)
         {
             Scanner sc=new Scanner(System.in);
-            System.out.print("请输入要修改顾客的");
-            int index=ArrayUtils.findCustomerByRoomId();
             System.out.println("选择要修改的属性");
             System.out.println("1.房间号 2.个人信息 3.退出");
+            System.out.print("请输入要修改顾客的");
+            int index=ArrayUtils.findCustomerByRoomId();
             int choice=sc.nextInt();
             switch (choice)
             {
