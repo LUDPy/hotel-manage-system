@@ -66,14 +66,14 @@ public class Main {
         while(true)
         {
             Scanner sc=new Scanner(System.in);
-            int index=1;//ArrayUtils.findCustomerByRoomId(Customer.arrCustomer);
+            System.out.print("请输入要修改顾客的");
+            int index=ArrayUtils.findCustomerByRoomId();
             System.out.println("选择要修改的属性");
             System.out.println("1.房间号 2.个人信息 3.退出");
             int choice=sc.nextInt();
             switch (choice)
             {
                 case 1:
-                    Customer.room[index]=false;
                     System.out.println("请输入房间号");
                     int roomId=sc.nextInt();
                     Customer.arrCustomer[index].setRoomId(roomId);
@@ -105,66 +105,37 @@ public class Main {
         System.out.println("2.通过姓名查询：");
         System.out.println("3.通过身份证号查询：");
         System.out.println("4.全局查询：");
+        System.out.println("5.退出");
         Scanner scanner=new Scanner(System.in);
         int choice=scanner.nextInt();
         switch (choice)
         {
             case 1:
-                System.out.println("请输入房间号");
-                int roomId= scanner.nextInt();
-                for (int i=0;i<Customer.arrCustomer.length;i++)
-                {
-                    if(roomId==Customer.arrCustomer[i].getRoomId())
-                    {
-                        System.out.println(Customer.arrCustomer[i].toString());
-                        iForReturn= i;
-                        break;
-                    }
-                }
+                System.out.print("请输入");
+                ArrayUtils.findCustomerByRoomId();
                 break;
 
             case 2:
-                System.out.println("请输入姓名");
-                String  name= scanner.next();
-                for (int i=0;i<Customer.arrCustomer.length;i++)
-                {
-                    if(name==Customer.arrCustomer[i].getName())
-                    {
-                        System.out.println(Customer.arrCustomer[i].toString());
-                        iForReturn= i;
-                        break;
-                    }
-                }
+                ArrayUtils.findCustomerByName();
                 break;
 
             case 3:
-                System.out.println("请输入身份证号");
-                String  number= scanner.next();
-                for (int i=0;i<Customer.arrCustomer.length;i++)
-                {
-                    if(number==Customer.arrCustomer[i].getIdNumber())
-                    {
-                        System.out.println(Customer.arrCustomer[i].toString());
-                        iForReturn= i;
-                        break;
-                    }
-                }
+                ArrayUtils.findCustomerByIdNumber();
                 break;
-
             case 4:
-                for (int i=0;i<Customer.arrCustomer.length;i++)
+                for (int i=0;i<Customer.index;i++)
                 {
                     System.out.println(Customer.arrCustomer[i].toString());
-                    break;
                 }
                 break;
-
             default:
-                System.out.println("输入错误，请重新输入");
+                System.out.println("！请输入正确的信息！");
+
         }
         return iForReturn;
     }
 }
+
 
 
 
