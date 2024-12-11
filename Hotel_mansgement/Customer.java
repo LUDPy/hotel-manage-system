@@ -16,6 +16,7 @@ public class Customer {
     }
     public Customer(int roomId,String name,String gender,String idNumber)
     {
+        
         setRoomId(roomId);
         this.name=name;
         setGender(gender);
@@ -23,7 +24,13 @@ public class Customer {
     }
 
     public void setRoomId(int roomId) {
+        
         Scanner sc=new Scanner(System.in);
+        while(roomId<1||roomId>50)
+        {
+                System.out.println("房间号输入错误，请重新输入:");
+                roomId=sc.nextInt();
+        }
         while(room[roomId]==true)
         {
             System.out.println("该房间已被使用,请重新输入:");
