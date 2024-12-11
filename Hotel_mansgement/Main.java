@@ -65,14 +65,15 @@ public class Main {
         // findCustomerByRoomId(数组，roomId,count),找到索引
         while(true)
         {
-            int index=ArrayUtils.findCustomerByRoomId(Customer.arrCustomer);
+            Scanner sc=new Scanner(System.in);
+            int index=1;//ArrayUtils.findCustomerByRoomId(Customer.arrCustomer);
             System.out.println("选择要修改的属性");
             System.out.println("1.房间号 2.个人信息 3.退出");
             int choice=sc.nextInt();
             switch (choice)
             {
                 case 1:
-                    room[index]=false;
+                    Customer.room[index]=false;
                     System.out.println("请输入房间号");
                     int roomId=sc.nextInt();
                     Customer.arrCustomer[index].setRoomId(roomId);
