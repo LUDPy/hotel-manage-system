@@ -95,6 +95,22 @@ public class Main {
     }
     public static void delete()
     {
+
+        System.out.println("顾客退房");
+
+        int num = ArrayUtils.findCustomerByRoomId();
+        if (Customer.index > 0 && Customer.index <51) {
+            //源数组中位置在 srcPos 到 srcPos+length-1 之间的组件被分别复制到目标数组中的 destPos 到 destPos+length-1 位置。
+            System.arraycopy(Customer.arrCustomer, num + 1, Customer.arrCustomer, num, Customer.index - num);
+            Customer.arrCustomer[Customer.index] = null;
+            Customer.index--;
+            Customer.room[num + 1] = false;
+            System.out.println("删除成功");
+        }
+
+        else{
+            System.out.println("该房间未入住!");
+        }
     }
     public static int view()
     {
