@@ -72,6 +72,7 @@ public class Main {
             switch (choice)
             {
                 case 1:
+                    room[index]=false;
                     System.out.println("请输入房间号");
                     int roomId=sc.nextInt();
                     Customer.arrCustomer[index].setRoomId(roomId);
