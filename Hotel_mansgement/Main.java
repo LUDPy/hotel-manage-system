@@ -60,37 +60,58 @@ public class Main {
         Customer.index++;
         System.out.println("添加成功");
     }
-    public static void modify() {
+   public static void modify() {
         while(true)
         {
             Scanner sc=new Scanner(System.in);
             System.out.println("选择要修改的属性");
             System.out.println("1.房间号 2.个人信息 3.退出");
+            int choice=sc.nextInt();
+            if(choice==3)
+            {
+                return;
+            }
             System.out.print("请输入要修改顾客的");
             int index=ArrayUtils.findCustomerByRoomId();
-            int choice=sc.nextInt();
+            if(index==-1)
+            {
+                return;
+            }
+            System.out.println("index值="+index);
             switch (choice)
             {
                 case 1:
-                    System.out.println("请输入房间号");
+                    if(Customer.room[Customer.arrCustomer[index].getRoomId()])
+                    {System.out.println("请输入新的房间号");
+                        Customer.room[Customer.arrCustomer[index].getRoomId()]=false;
                     int roomId=sc.nextInt();
                     Customer.arrCustomer[index].setRoomId(roomId);
                     break;
+                    } else if (!Customer.room[Customer.arrCustomer[index].getRoomId()]) {
+                        break;
+                    }
+
                 case 2:
-                    System.out.println("请输入姓名 身份证号 性别");
+                    if(Customer.room[Customer.arrCustomer[index].getRoomId()])
+                    {
+                    System.out.println("请重新填写姓名 身份证号 性别");
                     String name=sc.next();
                     String idNumber=sc.next();
                     String gender=sc.next();
                     Customer.arrCustomer[index].setName(name);
                     Customer.arrCustomer[index].setIdNumber(idNumber);
                     Customer.arrCustomer[index].setGender(gender);
+
                     break;
-                case 3:
-                    return;
+                    } else if (!Customer.room[Customer.arrCustomer[index].getRoomId()]) {
+
+                        break;
+                    }
                 default:
                     System.out.println("输入错误，请重新输入");
             }
-            System.out.println(Customer.arrCustomer[index].toString());
+            if(Customer.room[Customer.arrCustomer[index].getRoomId()])
+            {System.out.println(Customer.arrCustomer[index].toString());}
         }
     }
     public static void delete()
