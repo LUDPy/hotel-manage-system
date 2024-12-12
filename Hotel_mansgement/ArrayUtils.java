@@ -8,7 +8,7 @@ public class ArrayUtils {
     {
         int iForReturn=-1;
         Scanner scanner=new Scanner(System.in);
-        System.out.println("房间号");
+        System.out.println("请输入房间号");
         //判断是否存在
         boolean flag=true;
         int roomId= scanner.nextInt();
