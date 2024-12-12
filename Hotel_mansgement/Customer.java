@@ -11,14 +11,18 @@ public class Customer {
     private String name;
     private String gender;
     private String idNumber;
+    private  Integer age;
+
+
     public Customer()
     {
     }
-    public Customer(int roomId,String name,String gender,String idNumber)
+    public Customer(int roomId,String name,int age,String gender,String idNumber)
     {
         
         setRoomId(roomId);
         this.name=name;
+        setAge(age);
         setGender(gender);
         setIdNumber(idNumber);
     }
@@ -56,15 +60,31 @@ public class Customer {
         }
         this.gender = gender;
     }
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        Scanner sc=new Scanner(System.in);
+        boolean flag=age<0||age>=150;
+        while(flag)
+        {
+            System.out.println("输入错误，请重新输入:");
+            age=sc.nextInt();
+            flag=age<0||age>=150;
+        }
+        this.age = age;
+    }
+
 
     public void setIdNumber(String idNumber) {
         Scanner sc=new Scanner(System.in);
-        boolean flag=idNumber.length()!=2;
-        while(idNumber.length()!=2)
+        boolean flag=idNumber.length()!=1;
+        while(idNumber.length()!=1)
         {
             System.out.println("输入错误，请重新输入身份证号码");
             idNumber=sc.next();
-            flag=idNumber.length()!=2;
+            flag=idNumber.length()!=1;
         }
         this.idNumber = idNumber;
     }
@@ -87,7 +107,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "roomId:"+roomId+"\n"+"name:"+name+"\n"+"gender:"+gender+"\n"+"idNumber:"+idNumber;
+        return "房间号:"+roomId+"    "+"顾客姓名:"+name+"    "+"顾客年龄:" + age+"    "+"顾客性别:"+gender+"    "+"顾客身份证号:"+idNumber;
     }
 
     @Override
