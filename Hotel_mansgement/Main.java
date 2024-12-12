@@ -6,11 +6,11 @@ import java.util.Scanner;
 public class Main {
     static public void main(String[] args) {
 
-        System.out.println("顾客你好,本店所有房间都为空");
+        System.out.println("顾客您好,本店所有房间都为空");
         Scanner sc=new Scanner(System.in);
         while(true)
         {
-            System.out.println("---------------------商务酒店管理系统---------------------------------");
+            System.out.println("---------------------商务酒店管理系统---------------------");
             System.out.println("1.添加顾客信息");
             System.out.println("2.修改顾客信息");
             System.out.println("3.删除顾客信息");
@@ -41,21 +41,28 @@ public class Main {
     }
     public static void add()
     {
+        Customer.arrCustomer[Customer.index]=new Customer();
         if(Customer.index>=Customer.arrCustomer.length)
         {
-            System.out.println("无空房间");
+            System.out.println("当前已无空房间");
             return;
         }
         Scanner sc=new Scanner(System.in);
         System.out.println("房间号为(1-50):");
         int roomId=sc.nextInt();
+        Customer.arrCustomer[Customer.index].setRoomId(roomId);
         System.out.println("请输入姓名:");
         String name=sc.next();
+        Customer.arrCustomer[Customer.index].setName(name);
+        System.out.println("请输入年龄:");
+        int age=sc.nextInt();
+        Customer.arrCustomer[Customer.index].setAge(age);
         System.out.println("请输入性别(男/女):");
         String gender=sc.next();
+        Customer.arrCustomer[Customer.index].setGender(gender);
         System.out.println("请输入身份证号码:");
         String idNumber=sc.next();
-        Customer.arrCustomer[Customer.index]=new Customer(roomId,name,gender,idNumber);
+        Customer.arrCustomer[Customer.index].setIdNumber(idNumber);
         System.out.println(Customer.arrCustomer[Customer.index].toString());
         Customer.index++;
         System.out.println("添加成功");
@@ -77,12 +84,11 @@ public class Main {
             {
                 return;
             }
-            System.out.println("index值="+index);
             switch (choice)
             {
                 case 1:
                     if(Customer.room[Customer.arrCustomer[index].getRoomId()])
-                    {System.out.println("请输入新的房间号");
+                    {System.out.println("房间号");
                         Customer.room[Customer.arrCustomer[index].getRoomId()]=false;
                     int roomId=sc.nextInt();
                     Customer.arrCustomer[index].setRoomId(roomId);
@@ -120,17 +126,17 @@ public class Main {
         System.out.println("顾客退房");
 
         int num = ArrayUtils.findCustomerByRoomId();
-        if (Customer.index > 0 && Customer.index <51) {
+        if (num == -1) {
+            System.out.println("该房间未入住!");
+
+        }
+        else{
             //源数组中位置在 srcPos 到 srcPos+length-1 之间的组件被分别复制到目标数组中的 destPos 到 destPos+length-1 位置。
             System.arraycopy(Customer.arrCustomer, num + 1, Customer.arrCustomer, num, Customer.index - num);
             Customer.arrCustomer[Customer.index] = null;
             Customer.index--;
             Customer.room[num + 1] = false;
-            System.out.println("删除成功");
-        }
-
-        else{
-            System.out.println("该房间未入住!");
+            System.out.println("退房成功,欢迎下次光临");
         }
     }
     public static int view()
