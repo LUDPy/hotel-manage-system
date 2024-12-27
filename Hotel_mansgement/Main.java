@@ -139,7 +139,7 @@ public class Main {
             System.out.println("退房成功,欢迎下次光临");
         }
     }
-    /*顾客查询系统*/
+    /*顾客查询系统，其中主要功能代码集成在工具类中实现*/
     public static void view()
     {
         
