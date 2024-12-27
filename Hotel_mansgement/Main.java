@@ -139,29 +139,30 @@ public class Main {
             System.out.println("退房成功,欢迎下次光临");
         }
     }
-    public static int view()
+    /*顾客查询系统*/
+    public static void view()
     {
-        int iForReturn=0;
+        
         System.out.println("1.通过房间号查询：");
         System.out.println("2.通过姓名查询：");
         System.out.println("3.通过身份证号查询：");
         System.out.println("4.全局查询：");
-        System.out.println("5.退出");
+        
         Scanner scanner=new Scanner(System.in);
         int choice=scanner.nextInt();
-        switch (choice)
+        switch (choice)//通过switch语句来判断要求
         {
             case 1:
                 System.out.print("请输入");
-                ArrayUtils.findCustomerByRoomId();
+                ArrayUtils.findCustomerByRoomId();//调用工具类完成
                 break;
 
             case 2:
-                ArrayUtils.findCustomerByName();
+                ArrayUtils.findCustomerByName();//调用工具类完成
                 break;
 
             case 3:
-                ArrayUtils.findCustomerByIdNumber();
+                ArrayUtils.findCustomerByIdNumber();//调用工具类完成
                 break;
             case 4:
                 for (int i=0;i<Customer.index;i++)
@@ -173,7 +174,7 @@ public class Main {
                 System.out.println("！请输入正确的信息！");
 
         }
-        return iForReturn;
+        
     }
 }
 
