@@ -3,7 +3,11 @@ import java.util.Scanner;
 
 /**
  *视图界面类
+ *该类包含5个方法，分别是启动界面，以及对顾客信息增删改查操作
  *
+ * @author 马毓聪 卢东鹏 刘彬宏 马浩然
+ * @version 2.0
+ * @since
  */
 public class CustomerView {
     public static Scanner sc = new Scanner(System.in);
@@ -40,7 +44,10 @@ public class CustomerView {
         }
     }
 
-    /*添加顾客*/
+    /**
+     * 添加顾客信息
+     *
+     */
     public static void addCustomer() {
         Customer.arrCustomer[Customer.count] = new Customer();
         if (Customer.count >= Customer.arrCustomer.length) {
@@ -66,12 +73,18 @@ public class CustomerView {
         Customer.count++;
         System.out.println("添加顾客信息成功!!");
     }
-//修改顾客信息
+
+    /**
+     * 修改顾客信息
+     *
+     */
     public static void updateCustomer() {
         System.out.print("请输入房间号");
         int roomId= sc.nextInt();
-        int index=ArrayUtils.findIndexByRoomId(roomId);//获取到要修改顾客的下标
-        if(index==-1)//根据输入的房间号找不到这个人
+        //获取到要修改顾客的下标
+        int index=ArrayUtils.findIndexByRoomId(roomId);
+        //根据输入的房间号找不到这个人
+        if(index==-1)
         {
             System.out.println("该房间未入住!");
         }
@@ -92,26 +105,35 @@ public class CustomerView {
         }
     }
 
+    /**
+     *删除客户信息
+     *通过arraycopy函数，对存有顾客信息的数组进行修改
+     */
     public static void deleteCustomer() {
+        System.out.println("顾客退房,请输入房间号");
+        //输入的房间号
+        int roomId = sc.nextInt();
+        //通过findIndexByRoomId()查找房间是否入住，入住返回的是顾客在arrCustomer[]中的位置,否则返回-1
+        int index =ArrayUtils.findIndexByRoomId(roomId);
 
-        System.out.println("顾客退房");
-
-        int num =1 ;
-//        ArrayUtils.findIndexByRoomId();
-        if (num == -1) {
-            System.out.println("该房间未入住!");
+        if (index == -1) {
+            System.out.println("房间号错误!");
 
         } else {
             //源数组中位置在 srcPos 到 srcPos+length-1 之间的组件被分别复制到目标数组中的 destPos 到 destPos+length-1 位置。
-            System.arraycopy(Customer.arrCustomer, num + 1, Customer.arrCustomer, num, Customer.count - num);
+            System.arraycopy(Customer.arrCustomer, index + 1, Customer.arrCustomer, index, Customer.count - index);
+            //将最后一个客户重复的信息删掉
             Customer.arrCustomer[Customer.count] = null;
             Customer.count--;
-            Customer.room[num + 1] = false;
+            Customer.room[index + 1] = false;
             System.out.println("退房成功,欢迎下次光临");
         }
     }
 
-    /*顾客查询系统，其中主要功能代码集成在工具类中实现*/
+    /**
+     * 查询顾客信息
+     *
+     */
     public static void view() {
 
         System.out.println("1.通过房间号查询：");
