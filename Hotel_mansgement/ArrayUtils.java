@@ -2,10 +2,11 @@ package Hotel_mansgement;
 
 import java.util.Objects;
 import java.util.Scanner;
-
-public class ArrayUtils //工具类
+/*工具类，用于实现使用房间号查找，使用名字查找，使用身份证查找三个功能*/
+public class ArrayUtils 
 {
-    public static int findCustomerByRoomId()//通过房间号查找
+    /*通过房间号查找*/
+    public static int findCustomerByRoomId()
     {
         int iForReturn=-1;//用来返回房间号，若房间没人则返回初始值：-1
         Scanner scanner=new Scanner(System.in);
@@ -28,7 +29,8 @@ public class ArrayUtils //工具类
         }
        return iForReturn;
     }
-    public static void findCustomerByName()//通过顾客名查找
+    /*通过顾客名查找*/
+    public static void findCustomerByName()
     {
 
         Scanner scanner=new Scanner(System.in);
@@ -50,7 +52,8 @@ public class ArrayUtils //工具类
             System.out.println("查无此人");
         }
     }
-    public static void findCustomerByIdNumber()//通过身份证号码查询
+    /*通过身份证号查找*/
+    public static void findCustomerByIdNumber()
     {
         Scanner scanner=new Scanner(System.in);
         System.out.println("请输入身份证号");
