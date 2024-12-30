@@ -138,11 +138,15 @@ public class CustomerView {
     {
         
         for (int i = 0; i < Customer.count; i++) {
+            //从工具类中获取房间是否为空的标识
             int index=ArrayUtils.findIndexByRoomId(i);
+            //判断是否全部房间为空
             if(index!=-1){
+                //有人则输出
                 System.out.println(Customer.arrCustomer[i].toString());
             }
             else
+                //无人则输出
                 System.out.println("尊贵的顾客你好，本店目前所有房间都空着，没有顾客信息");
             
         }
