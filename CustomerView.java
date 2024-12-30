@@ -4,8 +4,7 @@ import java.util.Scanner;
 /**
  *视图界面类
  *该类包含5个方法，分别是启动界面，以及对顾客信息增删改查操作
- *
- * @author 马毓聪 卢东鹏 刘彬宏 马浩然
+ * @author 马毓聪 卢东鹏 刘彬宏 马浩然 李志成
  * @version 2.0
  * @since
  */
@@ -136,20 +135,15 @@ public class CustomerView {
      */
     public static void view() 
     {
-        
+        //判断是否有人入住
+        if (Customer.count == 0) {
+            //没有人
+            System.out.println("尊贵的顾客你好，本店目前所有房间都空着，没有顾客信息");
+        }
         for (int i = 0; i < Customer.count; i++) {
-            //从工具类中获取房间是否为空的标识
-            int index=ArrayUtils.findIndexByRoomId(i);
-            //判断是否全部房间为空
-            if(index!=-1){
-                //有人则输出
-                System.out.println(Customer.arrCustomer[i].toString());
-            }
-            else
-                //无人则输出
-                System.out.println("尊贵的顾客你好，本店目前所有房间都空着，没有顾客信息");
-                break;
-            
+            //有人
+            System.out.println(Customer.arrCustomer[i].toString());
+
         }
     }
 }
