@@ -6,7 +6,7 @@ import java.util.Scanner;
 *room 为房间 1-50 true 表示有人 false 表示无人
 *arrCustomer[]  存放用户信息 最大50个
 *count 顾客数量
-**/
+*/
 public class Customer {
     public static  boolean    []room=new boolean[51];
     public static Customer[] arrCustomer=new Customer[50];
@@ -125,12 +125,12 @@ public class Customer {
      */
     public void setIdNumber(String idNumber) {
         Scanner sc=new Scanner(System.in);
-        boolean flag=idNumber.length()!=1;
-        while(idNumber.length()!=1)
+        boolean flag=idNumber.length()!=18;
+        while(idNumber.length()!=18)
         {
             System.out.println("输入错误，请重新输入身份证号码");
             idNumber=sc.next();
-            flag=idNumber.length()!=1;
+            flag=idNumber.length()!=18;
         }
         this.idNumber = idNumber;
     }
