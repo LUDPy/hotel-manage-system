@@ -138,7 +138,8 @@ public class CustomerView {
     {
         
         for (int i = 0; i < Customer.count; i++) {
-            if(Customer.arrCustomer[i]!=-1){
+            int index=ArrayUtils.findIndexByRoomId(i);
+            if(index!=-1){
                 System.out.println(Customer.arrCustomer[i].toString());
             }
             else
