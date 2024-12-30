@@ -134,38 +134,16 @@ public class CustomerView {
      * 查询顾客信息
      *
      */
-    public static void view() {
-
-        System.out.println("1.通过房间号查询：");
-        System.out.println("2.通过姓名查询：");
-        System.out.println("3.通过身份证号查询：");
-        System.out.println("4.全局查询：");
-
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
-        switch (choice)//通过switch语句来判断要求
-        {
-//            case 1:
-//                System.out.print("请输入");
-//                ArrayUtils.findCustomerByRoomId();//调用工具类完成
-//                break;
-
-            case 2:
-                ArrayUtils.findCustomerByName();//调用工具类完成
-                break;
-
-            case 3:
-                ArrayUtils.findCustomerByIdNumber();//调用工具类完成
-                break;
-            case 4:
-                for (int i = 0; i < Customer.count; i++) {
-                    System.out.println(Customer.arrCustomer[i].toString());
-                }
-                break;
-            default:
-                System.out.println("！请输入正确的信息！");
-
+    public static void view() 
+    {
+        
+        for (int i = 0; i < Customer.count; i++) {
+            if(Customer.arrCustomer[i]!=-1){
+                System.out.println(Customer.arrCustomer[i].toString());
+            }
+            else
+                System.out.println("尊贵的顾客你好，本店目前所有房间都空着，没有顾客信息");
+            
         }
-
     }
 }
