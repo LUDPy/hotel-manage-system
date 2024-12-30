@@ -148,6 +148,7 @@ public class CustomerView {
             else
                 //无人则输出
                 System.out.println("尊贵的顾客你好，本店目前所有房间都空着，没有顾客信息");
+                break;
             
         }
     }
