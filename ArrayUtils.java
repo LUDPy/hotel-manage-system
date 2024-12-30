@@ -5,6 +5,7 @@ import java.util.Scanner;
 /**
  * 工具类，用于实现使用房间号查找，使用名字查找，使用身份证查找三个功能
  */
+
 public class ArrayUtils 
 {
     /**
