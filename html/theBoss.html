@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于</title>
+    <style>
+        header{
+            position: fixed;
+            height: 55px;
+            background-color: #171a21;
+            width:100%;
+            z-index: 1000;
+        }
+        body{
+            background-color: #1D2024;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            align-items: center;
+           
+        }
+        #d1{
+            float: right;
+            margin-right: 100px;
+            
+        }
+        #d1 button{
+            background-color: #5C7E10;
+            color: #f9f6f3;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        #d1 button:hover{
+            background: linear-gradient(to right, #8ab728, #8ab728);
+        }
+        #d1 select{
+           width: 55px;
+            background-color: #171a21; 
+            color: #B8B6B4;
+            border: none;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 8px;
+        }
+        body nav img{
+            height: 52px;
+            margin-right: 0px;
+            margin-left: 120px;
+        }
+        body nav{
+            display: flex;
+            padding: 10px;
+            flex-direction: row;
+            align-items: flex-start;
+        }
+        body nav a{
+            color: white;
+            text-decoration: none;
+            
+            margin-left: 20px;
+            font-size: 22px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        body nav a:hover{
+            
+            background-color: #adb2ba96;
+        }
+        #d1 a{
+            text-decoration: none;
+            font-size: 10px;
+            color: white;
+        }
+        main{
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            flex: 1;
+        }
+        .theBigger{
+            
+            width: 75%;
+            height: 480px;
+            display: block;
+            margin-top: 50px;
+            display: flex;
+            flex-direction: row;
+        }
+        #page1 div{
+            
+            height: 100%;
+            width: 49%;
+            margin-top: 20px;
+            margin-right: 10px;
+            margin-left: 10px;
+            display: flex;
+            
+        }
+
+        #page1 div img{
+            width: 100%;
+            display: block;
+            align-items: center;
+        }
+        #page1 div table{
+            margin-top: 1px;
+            margin: auto;
+            justify-content: center; 
+            align-items: center;
+            color: white;
+        }
+        #page1 div table button{
+            margin-top: 5px;
+            height: 60px;
+            width: 250px;
+            background-color: #06BFFF;
+            background: linear-gradient(to right, #06BEFF, #2A75FF);
+            font-size: 20px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: white;
+            
+        }
+        #page1 div table button:hover{
+            background: linear-gradient(to right, #06BEFF, #06BEFF);
+        }
+        #l1::marker{
+            color: #2EBFFF;
+            font-size: 22px;
+        }
+        #l2::marker{
+            color: #BAFF2E;
+            font-size: 22px;
+        }
+        #page2{
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            width: 90%;
+            position: relative;
+            
+            
+        }
+        #page2 div{
+            width: 50%;
+            height: 45%;
+            
+            align-items: center;
+            color: white;
+        }
+        
+     
+        #m1{
+            position: absolute;
+            left: -50px;
+            top:15%;
+            
+        }
+        #m2{
+            position: absolute;
+            left: 300px;
+            top:10px;
+        }
+        #m3{
+            position: absolute;
+            left: 700px;
+            top:20px;
+        }
+        #m4{
+            position: absolute;
+            right: -30px;
+            top:30%;
+        }
+        #m5{
+            position: absolute;
+            right: 30px;
+            top:60%;
+        }
+        #m6{
+            position: absolute;
+            left: 4%;
+            top:45%;
+        }#m7{
+            position: absolute;
+            left: 55%;
+            top:73%;
+        }
+        #m8{
+            position: absolute;
+            left: 10%;
+            top:80%;
+        }
+        #m9{
+            position: absolute;
+            left: 35%;
+            top:90%;
+            width: 180px;
+        }
+        #m11{
+            position: absolute;
+            left: 65%;
+            top:100%;
+            width: 150px;
+        }
+        #m10{
+            position: absolute;
+            left: 25%;
+            top:110%;
+            width: 150px;
+        }
+
+        #page3{
+            position: relative; 
+        }
+
+        #page3 div img{
+            height: 50%;
+        }
+        #page3 div{
+            
+            height: 90%;
+            width: 49%;
+            margin-top: 20px;
+            margin-right: 10px;
+            margin-left: 10px;
+            align-items: center;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center;  
+            
+        }
+        #mm1{
+            position: absolute;
+            left: 10%;
+            top: 30%;
+        }
+        #mm2{
+            position: absolute;
+            left: 10%;
+            top: 30%;
+        }
+        #page3 div p a{
+            text-decoration: none;
+            color: #2EBFFF;
+        }
+        #page3 div p a:hover::after{
+            content: " ->";
+            position: absolute;
+        }
+        #page3 div p a:hover span{
+            visibility: hidden;
+        }
+        #page4{
+            position: relative;
+        }
+        #page4 div{
+            height: 90%;
+            width: 49%;
+            margin-left: 10px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+        }
+        #page4 div p a:hover::after{
+            content: " ->";
+            position: absolute;
+        }
+        #page4 div p a:hover span{
+            visibility: hidden;
+        }
+        #page4 div img{
+            width:100%;
+        }
+        #page4 div p a{
+            text-decoration: none;
+            color: #2EBFFF;
+        }
+        #page5{
+            position: relative;
+            
+        }
+        #page5 div{
+            width: 49%;
+            margin-left: 10px;
+            margin-right: 10px;
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        #mmm1{
+            height: 6%;
+            
+            position: absolute;
+            left: 11%;
+            top:18%;
+        }
+        #page5 div p a{
+            text-decoration: none;
+            color: #06BEFF;
+        }
+        #page5 div p a:hover::after{
+            content: " ->";
+        }
+        #page5 div p a:hover span{
+            visibility: hidden;
+        }
+        #page6{
+            position: relative;
+        }
+        #page6 table{
+           
+            width: 100%;
+            height: 100%;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        #page6 table tr td img{
+            height: 60px;
+            width: 60px;
+            display: block;
+            margin: 0 auto;
+            padding: 5px;
+        }
+        
+        #page6 table tr td{
+            
+            padding-left: 50px;
+            padding-right: 50px;
+            border-radius: 10px;
+            color: white;
+           
+        }
+        #page6 table tr td:hover{
+            border: 1px white solid;
+            background-color: #ADB2BA;
+           
+        }
+        #page6 table tr td:hover img{
+            background-color: #06BEFF;
+            border-radius: 45px;
+        }
+        
+        #myfooter{
+            position: relative;
+            background-color: #171a21;
+            /* background-color: #2A75FF; */
+            width: 100%;
+            height: 150px;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+        }
+        #myfooter table{
+            width: 80%;
+            height: 40%;
+            margin: 15px;
+            border-top: 2px white solid;
+            border-bottom: 2px white solid;
+            text-align: center;
+        }
+        #myfooter table tr td p{
+            color: #ADB2BA;
+            font-size: 12px;
+        }
+        #myfooter table tr td img{
+            height: 30px;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+    <div id="d1">
+        <button>安装steam</button>
+        <a href="login.html">登陆 &nbsp;&nbsp;&nbsp;|</a>
+        <select name="" id="" style="color: white;">
+            <option value="" >语言</option>
+            <option value="">繁體中文(繁体中文)</option>
+            <option value="">日本語(日语)</option>
+            <option value="">한국어(韩语)</option>
+            <option value="">English(英语)</option>
+        </select>
+    </div>
+    <nav>
+        <img src="header_logo.png" alt="" style="height: 40px;">
+        <a href="steam.html">商店</a>
+        <a href="a.html">数据统计</a>
+        <a href="">个人主页</a>
+        <a href="theBoss.html">关于</a>
+    </nav>
+    </header>
+
+    <main>
+        <div class="theBigger" id="page1" style="height: 450px;">
+            <div>
+                <table>
+                    <tr>
+                        <td colspan="2">
+                            <img src="logo_steam.svg" alt="">
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td colspan="2">Steam 是畅玩游戏、讨论游戏、创造游戏的快乐所在。</td>
+                    </tr>
+                    <tr>
+                        <td><li id="l1">在线</li></td>
+                        <td><li id="l2">正在游戏</li></td>
+                    </tr>
+                    <tr>
+                        <td>32,796,733</td>
+                        <td>9,216,747</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button>&nbsp;&nbsp;安装steam <img src="icon-windows.svg" alt="" style="height: 35px; float: right;"></button>
+                        </td>
+                    </tr>
+                    
+                </table>
+            </div>
+            <div>
+                <img src="about_hero_loop_web.png" alt="">
+            </div>
+        </div>
+        <a href="#page2" style="text-decoration: none;color: white;">查看更多</a>   
+        <div class="theBigger" id="page2">
+            <img src="2077.jpg" alt="" id="m1">
+            <img src="2K.jpg" alt="" id="m2">
+             <img src="黑猴.jpg" alt="" id="m3">
+            <img src="刀塔.jpg" alt="" id="m4">
+            <img src="帕鲁.jpg" alt="" id="m5">
+            <img src="永劫.jpg" alt="" id="m6">
+            <img src="APEX.jpg" alt="" id="m7">
+            <img src="CSGO.jpg" alt="" id="m8">
+            <img src="PUBG.jpg" alt="" id="m9"> 
+            <img src="capsule_231x87(1).jpg" alt="" id="m10">
+            <img src="capsule_231x87(2).jpg" alt="" id="m11">
+            
+            <div>                
+                <h1 style="text-align: center;">立即访问游戏</h1>
+                <p style="color: #ADB2BA; text-align: center;">
+                    我们有约 30,000 款游戏，从 AAA 大作到小品的独立游戏，种类繁多，应有尽有。您可以尽情享受独家优惠、游戏自动更新及各种出色服务<br>
+                    <a href="steam.html" style="text-decoration: none;color: #06BFFF;">访问商店</a>
+                </p>
+                
+            </div>
+        </div>
+
+        <div class="theBigger" id="page3">
+            <div>
+                <img src="cta_hero_hardware_pt1.png" alt="" id="mm1">
+                <img src="cta_hero_hardware_pt2.png" alt="" id="mm2">
+            </div>
+            <div>                
+                <h1 style="text-align: center;color: white;" >体验Steam硬件</h1>
+                <p style="color: #ADB2BA; text-align: center;">
+                    我们打造了 Steam Deck 和 Valve Index 头戴式显示器，让 PC 游戏的体验更加精彩。<br><br>
+                    <a href="https://store.steampowered.com/search/?category1=993">体验Steam硬件<span>-></span></a>
+                </p>
+                
+            </div>
+        </div>
+
+        <div class="theBigger" id="page4">
+            <div>                
+                <h1 style="color: white;" >加入社区</h1>
+                <p style="color: #ADB2BA;">
+                    会见新玩家，加入群组，建立俱乐部，在<br>游戏中畅聊，以及更多精彩！与超过一亿<br>名潜在的好友（或敌人）一起享受无穷的<br>乐趣！<br><br>
+                    <a href="https://steamcommunity.com/" >访问社区<span>-></span></a>
+                </p>
+                
+            </div>
+            <div>
+                
+                <img src="cta_hero_community.png" alt="">
+            </div>
+        </div>
+
+        <div class="theBigger" id="page5" >
+            <div style="margin-left: 10%;">
+                <img src="logo-steamworks.svg" alt="" id="mmm1">
+                <h1 style="color: white;" >发行游戏</h1>
+                <p style="color: #ADB2BA;">
+                    会见新玩家，加入群组，建立俱乐部，在<br>游戏中畅聊，以及更多精彩！与超过一亿<br>名潜在的好友（或敌人）一起享受无穷的<br>乐趣！<br><br>
+                    <a href="https://partner.steamgames.com/" >了解Steamworks<span>-></span></a>
+                </p>
+            </div>
+            <div>
+                <img src="cta_hero_steamworks.png" alt="">
+            </div>
+
+        </div>
+
+        <div class="theBigger" id="page6" style="height: 900px;">
+            <table>
+                <tr>
+                    <td colspan="3" style="text-align: center; background-color: #1D2024; border: none;">
+                        <h1>功能</h1>
+                        <p>我们致力于不断为 Steam 带来新更新与新功能，比如：</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    
+                        <img src="chat.svg" alt="">
+                        <p>无需离开 steam 便能与好友或群组进行文字或语音聊天。支持视频、推文、GIF 及其他内容。请合理使用。</p>
+                    
+                    </td>
+                    <td>
+                        
+                        <img src="gamehubs.svg" alt="">
+                        <p>关于您游戏的一切尽在这里。加入讨论，上传内容，率先知道最新更新。</p>
+                    
+                    </td>
+                    <td>
+                        
+                        <img src="cast.svg" alt="">
+                        <p>一键将您的游戏过程实况直播，并
+                            将游戏与好友或社区其他成员分
+                            享。</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                        <img src="workshop.svg" alt="">
+                        <p>创建、探索、下载玩家为近 1,000款支持的游戏所制作的模组与饰品</p>
+                    </td>
+                    <td>
+                        
+                        <img src="mobile.svg" alt="">
+                        <p>您可以使用 steam 手机应用，在
+                            ios 或安卓设备上随时随地访问
+                            Steam。</p>
+                    </td>
+                    <td>
+                        
+                        <img src="earlyaccess.svg" alt="">
+                        <p>探索、体验、并参与游戏发展。率先目睹未来的到来，并成为推动这个进程的一份子。</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                        <img src="languages.svg" alt="">
+                        <p>创建全球性的社区对我们至关重要，因此我们的客户端现已支持28 种语言，而且还会支持更多语言。</p>
+                   
+                    </td>
+                    <td>
+                        
+                        <img src="payment.svg" alt="">
+                        <p>我们的商店支持 100 多种支付方式及 35 种货币，让您自由选择如何付款。</p>
+                    </td>
+                    <td>
+                       
+                        <img src="controllers.svg" alt="">
+                        <p>Steam 鼓励开发者在游戏中支持名类控制器，包括 PlayStation、Xbox 及 Nintendo 控制器。</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        
+    </main>
+    <footer class="theBigger" id="myfooter">
+        <table>
+            <tr>
+                <td><img src="logo_valve_footer.png" alt=""></td>
+                <td>
+                    <p>©2024 Valve Corporation。保留所有权利。所有商标均为其在美国及其它国家/地区的各自持有者所有。</p>
+                    <p>所有的价格均已包含增值税（如适用）。   隐私政策   |   法律信息   |   Steam 订户协议   |   退款   |   Cookie
+                    </p>
+                </td>
+                <td><img src="header_logo.png" alt=""></td>
+            </tr>
+        </table>
+    </footer>
+</body>
+</html>
