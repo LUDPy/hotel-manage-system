@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steam Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url("img/bgimg.jpg");
+      background-size: cover;
+      background-attachment: fixed;
+      color: #c7d5e0;
+    }
+
+    header {
+      background-color: #171a21;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    header nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    header nav a {
+      color: #c7d5e0;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    header nav a:hover {
+      color: #66c0f4;
+    }
+
+    .logIn {
+      display: flex;
+      gap: 10px;
+    }
+
+
+
+    .logIn button {
+      padding: 5px 10px;
+      font-size: 1em;
+      background-color: #66c0f4;
+      color: #1b2838;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .logIn button:hover {
+      background-color: #417a9b;
+    }
+
+    .main-header {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .main-header img {
+      width: 80%;
+      height: auto;
+      object-fit: cover;
+      position: absolute;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      margin-left: 10%;
+    }
+
+    .main-header img.active {
+      opacity: 1;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      color: #c7d5e0;
+      background-color: rgba(0, 0, 0, 0.5);
+      border: none;
+      padding: 10px;
+
+      z-index: 10;
+      transition: background-color 0.3s;
+    }
+
+    .arrow:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .arrow.left {
+      left: 10px;
+    }
+
+    .arrow.right {
+      right: 10px;
+    }
+
+    #textBar {
+      font-size: 1.5em;
+      margin: 20px 30px;
+      color: #66c0f4;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    #gameBar {
+      display: flex;
+      padding: 20px;
+      gap: 10px;
+
+    }
+
+
+
+    #gameBar::-webkit-scrollbar-track {
+      background: #1b2838;
+    }
+
+    .games {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 10px;
+      background-color: #2a475e;
+      padding: 10px;
+      text-align: center;
+      width: 200px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+      font-size: medium;
+    }
+
+    .games:hover {
+      transform: scale(1.05);
+    }
+
+    .games input[type="image"] {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background-color: #171a21;
+      padding: 15px 30px;
+      text-align: center;
+      color: #c7d5e0;
+      font-size: 0.8em;
+      margin-top: 20px;
+    }
+  </style>
+
+</head>
+<body>
+<header>
+  <nav>
+    <input type="image" src="img/steam.png" width="30px">
+    <a href="steam.html">商店</a>
+    <a href="A.html">统计</a>
+    <a href="theBoss.html">关于</a>
+    <a href="#">个人</a>
+  </nav>
+  <h1>STEAM</h1>
+  <div class="logIn">
+    <button onclick="login.html">登录</button>
+  </div>
+</header>
+
+<div class="main-header">
+  <button class="arrow left">&#8249;</button>
+  <button class="arrow right">&#8250;</button>
+  <img src="img/header1.jpg" alt="header 1" class="active">
+  <img src="img/header2.jpg" alt="header 2">
+  <img src="img/header3.jpg" alt="header 3">
+</div>
+<div><input type="image" src="img/goodthing1.png"></div>
+
+<div id="textBar">热门游戏
+
+  <div id="gameBar">
+    <div class="games"><input type="image" src="img/2077.jpg">$29.9 赛博朋克2077</div>
+    <div class="games"><input type="image" src="img/ittakes2.jpg">$29.9  双人成行</div>
+    <div class="games"><input type="image" src="img/gtav.jpg">$29.9  GTA V</div>
+    <div class="games"><input type="image" src="img/apex.jpg">$29.9  APEX</div>
+    <div class="games"><input type="image" src="img/horizon5.jpg">$29.9  地平线5</div>
+    <div class="games"><input type="image" src="img/nba2k22.jpg">$29.9  nba2k22</div>
+    <div class="games"><input type="image" src="img/wallp.jpg">$29.9  wallpaper</div>
+  </div>
+
+</div>
+
+
+<footer></footer>
+
+<script>
+  let currentIndex = 0;
+  const banners = document.querySelectorAll('.main-header img');
+  const leftArrow = document.querySelector('.arrow.left');
+  const rightArrow = document.querySelector('.arrow.right');
+
+  function showBanner(index) {
+    banners.forEach((banner, i) => {
+      banner.classList.toggle('active', i === index);
+    });
+  }
+
+  function prevBanner() {
+    currentIndex = (currentIndex - 1 + banners.length) % banners.length;
+    showBanner(currentIndex);
+  }
+
+  function nextBanner() {
+    currentIndex = (currentIndex + 1) % banners.length;
+    showBanner(currentIndex);
+  }
+
+  leftArrow.addEventListener('click', prevBanner);
+  rightArrow.addEventListener('click', nextBanner);
+
+  setInterval(nextBanner, 3000); // 自动轮换
+</script>
+</body>
+</html>
