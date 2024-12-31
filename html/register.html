@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam 注册</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1b2838;
+        }
+
+        .background {
+            height: 100vh;
+            background: url("https://store.cdn.queniuqe.com/public/shared/images/joinsteam/acct_creation_bg.jpg") no-repeat center center;
+            background-size: cover;
+        }
+
+        .header {
+            width: 100%;
+            height: 90px;
+            background-color: #171a21;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            z-index: 3;
+        }
+
+        .header .logo {
+            display: flex;
+        }
+
+        .header .logo img {
+            height: 40px;
+        }
+
+        .header .nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .header .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 25px;
+        }
+
+        .header .nav a:hover {
+            color: #0080ff;
+        }
+
+        .register-container {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            background-color: #181a21;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .register-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .input-group input {
+            background-color: #32353c;
+            width: 90%;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            font-size: 16px;
+            color: #ffffff;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #277fff;
+            border: none;
+            border-radius: 3px;
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #00aeff;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-link p {
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        .login-link a {
+            color: #66c0f4;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo">
+            <img src="https://store.st.dl.eccdnx.com/public/shared/images/responsive/header_logo.png"> 
+            <div class="nav">
+                <a href="#">商店</a>
+                <a href="#">社区</a>
+                <a href="#">关于</a>
+                <a href="#">客服</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="background"></div>
+
+    <div class="register-container">
+        <div class="register-title">创建您的账户</div>
+        <form id="registerForm" action="welcome.html" method="POST">
+            <div class="input-group">
+                <label for="username" style="color: #277fff;">账户名称</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password" style="color: #afafaf;">密码</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <label for="confirm-password" style="color: #afafaf;">确认密码</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <button type="submit">注册</button>
+        </form>  
+        <div class="login-link">
+            <p>已经有账户？<a href="login.html">立即登录</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // 阻止默认表单提交行为
+    
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+    
+            // 存储用户名和密码到 cookie
+            document.cookie = "username=" + username + "; path=/";
+            document.cookie = "password=" + password + "; path=/";
+    
+            // 注册成功后跳转到 login.html
+            window.location.href = "login.html";
+        });
+    </script>
+    
+    
+
+</body>
+</html>
