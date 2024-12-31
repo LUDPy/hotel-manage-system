@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+            background-image: url("004.png");
+            color: #dcdcdc;
+        }
+        .header {
+            width: 100%;
+            height: 60px;
+            background-color: #1b2838; /* 深蓝色背景 */
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            z-index: 3;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* 阴影效果 */
+        }
+        .header img {
+            width: 150px;
+            height: 120x;
+        }
+
+        .header .nav {
+            display: flex;
+            gap: 40px;
+            text-align: center;
+        }
+
+        .header .nav a {
+            color: #c7d5e0; /* 浅灰色文字 */
+            text-decoration: none;
+            font-size: 16px; /* 调整文字大小 */
+            font-weight: bold;
+            line-height: 60px; /* 保证文字高度居中 */
+        }
+
+        .header .nav a:hover {
+            color: #66c0f4; /* 浅蓝色文字 hover 效果 */
+            text-decoration: underline;
+        }
+    .profile {
+    display: flex;
+    align-items: center;
+    max-width: 960px;
+    margin: 80px auto;
+    background: rgba(12, 12, 12, 0.767);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    padding: 15px;
+}
+
+.profile img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-info h1 {
+    font-size: 24px;
+    margin: 0;
+    color: #ffffff;
+}
+
+.profile-info p {
+    margin: 5px 0;
+    color: #999;
+}
+
+.level {
+    text-align: right;
+}
+
+.level span {
+    display: block;
+    font-size: 18px;
+    color: #4bb5f7;
+}
+
+.level button {
+    background: #4bb5f7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.level button:hover {
+    background: #359fd4;
+}
+        .main-content {
+            display: flex;
+            max-width: 960px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+
+        .recent-activity, aside {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            flex: 1;
+        }
+
+        .recent-activity {
+            flex: 3; /* 左侧动态区域占3倍宽度 */
+        }
+
+        .recent-activity h2, aside h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .activity-item img {
+            width: 100px;
+            height: 60px;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+
+        .game-info h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #ffffff;
+        }
+        .input-box {
+            display: flex;
+            align-items: flex-start; /* 文本框和图像顶部对齐 */
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+        }
+        .input-box img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%; /* 圆形头像 */
+            margin-right: 15px; /* 与文本框的间距 */
+        }
+
+        .input-box textarea {
+            flex: 1; /* 占据剩余空间 */
+            height: 30x; /* 与头像高度一致 */
+            border: 1px solid #4bb5f7;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #dcdcdc;
+            padding: 10px;
+            font-size: 14px;
+            resize: none;
+        }
+
+        .input-box button {
+            margin-left: 10px; /* 按钮与文本框间距 */
+            background: #4bb5f7;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .input-box button:hover {
+            background: #359fd4;
+        }
+        .activity-item {
+    display: flex;
+    align-items: flex-start; /* 调整为顶部对齐 */
+    margin-bottom: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.activity-item img {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+}
+
+.activity-item .game-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #dcdcdc;
+}
+
+        .game-info p {
+            margin: 2px 0;
+            font-size: 14px;
+            color: #999;
+        }
+
+        aside ul {
+            font-size: larger;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        aside ul li {
+            margin-bottom: 10px;
+        }
+
+        aside ul li a {
+            text-decoration: none;
+            color: #4bb5f7;
+            font-size: 14px;
+        }
+
+        aside ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="005.png" alt="Steam Logo">
+        <div class="nav">
+            <a href="stem.html">商店</a>
+            <a href="A.html">统计</a>
+            <a href="theBoss">关于</a>
+            <a href="#">我的</a>
+        </div>
+    </div>
+            
+    <div class="profile">
+        <img src="001.jpg" alt="Avatar id="profile-avatar>
+        <div class="profile-info">
+            <h1 id="profile-name">睡大觉</h1>
+            <p id="profile-signature">不上早八。</p>
+        </div>
+        <div class="level">
+            <span>10 级</span>
+            <button onclick="editProfile()">编辑个人资料</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="recent-activity">
+            <h2>最新动态</h2>
+            <div class="activity-item">
+                <img src="002.png" alt="Counter-Strike 2">
+                <div class="game-info">
+
+                    <a href="https://steamcommunity.com/app/730">Counter-Strike 2</a>
+                    <p>总时数 18.6 小时</p>
+                    <p>最后运行日期：11 月 23 日</p>
+                </div>
+            </div>
+            <div class="activity-item">
+                <img src="003.png" alt="Real Pool 3D">
+                <div class="game-info">
+                    <a href="https://steamcommunity.com/app/891040">台球3D - Poolians</a>
+                    <p>总时数 5.2 小时</p>
+                    <p>最后运行日期：11 月 22 日</p>
+                </div>
+            </div>
+            <div class="activity-item">
+                <img src="004.png" alt="Pool 2D">
+                <div class="game-info">
+                    <a href="https://steamcommunity.com/app/891040">台球2D - Poolians</a>
+                    <p>总时数 0.7 小时</p>
+                    <p>最后运行日期：2023 年 7 月 1 日</p>
+                </div>
+            </div>
+            <div id="comments-container"></div>
+            <div class="input-box">
+                <img src="001.jpg">
+                <textarea id="message-input" placeholder="添加一条留言"></textarea>
+                <button onclick="submitMessage()">提交留言</button>
+            </div>
+        </div>
+
+        <aside>
+            <h2>当前在线</h2>
+            <ul>
+                <li><a href="https://steamcommunity.com/profiles/76561199416539858/badges/">徽章</a></li>
+                <li><a href="https://steamcommunity.com/profiles/76561199416539858/games/?tab=all">游戏</a></li>
+                <li><a href="https://steamcommunity.com/profiles/76561199416539858/inventory/">库存</a></li>
+                <li><a href="https://steamcommunity.com/profiles/76561199416539858/screenshots/">截图</a></li>
+                <li><a href="https://steamcommunity.com/profiles/76561199416539858/videos/">视频</a></li>
+                <li><a href="https://steamcommunity.com/profiles/76561199416539858/myworkshopfiles/">创意工坊</a></li>
+                <li><a href="https://steamcommunity.com/profiles/76561199416539858/recommended">测评</a></li>
+                <li><a href="https://steamcommunity.com/profiles/76561199416539858/myworkshopfiles/?section=guides">指南</a></li>
+                <li><a href="https://steamcommunity.com/profiles/76561199416539858/images/">艺术作品</a></li>
+            </ul>
+        </aside>
+    </div>
+</body>
+<script>
+    function editProfile() {
+        const newName = prompt("请输入新的用户名：", document.getElementById("profile-name").textContent);
+        if (newName) {
+            document.getElementById("profile-name").textContent = newName;
+        }
+
+        const newSignature = prompt("请输入新的签名：", document.getElementById("profile-signature").textContent);
+        if (newSignature) {
+            document.getElementById("profile-signature").textContent = newSignature;
+        }
+    }
+
+    function submitMessage() {
+    const messageInput = document.getElementById("message-input");
+    const message = messageInput.value.trim();
+    if (!message) {
+        alert("留言内容不能为空！");
+        return;
+    }
+
+    // 创建一个新的留言元素
+    const commentContainer = document.getElementById("comments-container");
+    const commentItem = document.createElement("div");
+    commentItem.className = "activity-item";
+
+    const commentAvatar = document.createElement("img");
+    commentAvatar.src = "001.jpg";
+    commentAvatar.alt = "Avatar";
+
+    const commentInfo = document.createElement("div");
+    commentInfo.className = "game-info";
+
+    const commentText = document.createElement("p");
+    commentText.textContent = message;
+
+    commentInfo.appendChild(commentText);
+    commentItem.appendChild(commentAvatar);
+    commentItem.appendChild(commentInfo);
+    commentContainer.appendChild(commentItem);
+
+    // 清空留言输入框
+    messageInput.value = "";
+}
+</script>
+</body>
+</html>
+</html>
