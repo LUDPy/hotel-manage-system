@@ -104,19 +104,19 @@ public class CustomerView {
         }
     }
 
-    /**
+   /**
      *删除客户信息
      *通过arraycopy函数，对存有顾客信息的数组进行修改
      */
     public static void deleteCustomer() {
-        System.out.println("顾客退房,请输入房间号");
+        System.out.println("请输入房间号：");
         //输入的房间号
         int roomId = sc.nextInt();
-        //通过findIndexByRoomId()查找房间是否入住，入住返回的是顾客在arrCustomer[]中的位置,否则返回-1
+        //调用ArrayUtils中的findIndexByRoomId()查找房间是否入住，入住返回的是顾客在arrCustomer[]中的位置,否则返回-1
         int index =ArrayUtils.findIndexByRoomId(roomId);
 
         if (index == -1) {
-            System.out.println("房间号错误!");
+            System.out.println("顾客信息不存在，请重新输入房间号");
 
         } else {
             //源数组中位置在 srcPos 到 srcPos+length-1 之间的组件被分别复制到目标数组中的 destPos 到 destPos+length-1 位置。
@@ -125,10 +125,10 @@ public class CustomerView {
             Customer.arrCustomer[Customer.count] = null;
             Customer.count--;
             Customer.room[index + 1] = false;
-            System.out.println("退房成功,欢迎下次光临");
+            System.out.println("删除顾客信息成功！");
         }
     }
-
+    
     /**
      * 查询顾客信息
      *
