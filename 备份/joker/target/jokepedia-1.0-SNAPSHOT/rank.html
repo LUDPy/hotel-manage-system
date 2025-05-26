@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>热门梗榜</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>热门梗榜</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+                position: relative;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                background-color: #f4f4f9;
+            }
+
+            header {
+                background-color: #ffffff;
+                padding: 40px 50px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            nav {
+                display: flex;
+                align-items: center;
+            }
+
+            nav a {
+                margin-right: 30px;
+                text-decoration: none;
+                color: #333;
+                font-weight: bold;
+                font-size: 22px;
+                transition: color 0.3s ease;
+            }
+
+            nav a.active {
+                color: #e63946;
+                border-bottom: 2px solid #e63946;
+                padding-bottom: 5px;
+            }
+
+            nav a:hover {
+                color: #e63946;
+            }
+
+            .product-menu {
+                cursor: pointer;
+                color: #333;
+                font-weight: bold;
+                font-size: 22px;
+                transition: color 0.3s ease;
+            }
+
+            .product-menu:hover {
+                color: #e63946;
+            }
+
+            .login {
+                color: #333;
+                font-weight: bold;
+                font-size: 22px;
+                transition: color 0.3s ease;
+            }
+
+            .login:hover {
+                color: #e63946;
+            }
+
+            .stats {
+                margin-top: 10px;
+                color: #6c757d;
+            }
+
+            .stats span {
+                font-weight: bold;
+            }
+
+            main {
+                flex-grow: 1;
+                position: relative;
+                z-index: 1;
+                padding: 30px;
+                background-color: #f4f4f9;
+            }
+
+            .logo {
+                font-size: 3em;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+
+            .logo-text-red {
+                color: #e63946;
+            }
+
+            .logo-text-black {
+                color: #333;
+            }
+
+            .joke-list {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+            }
+
+            .joke-item {
+                background-color: #fff;
+                border-radius: 10px;
+                padding: 20px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .joke-item:hover {
+                transform: scale(1.05);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            }
+
+            .joke-item::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 4px;
+                background-color: #e63946;
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform 0.3s ease;
+            }
+
+            .joke-item:hover::before {
+                transform: scaleX(1);
+            }
+
+            .joke-item h2 {
+                margin-bottom: 10px;
+                font-size: 1.5em;
+                color: #333;
+                cursor: pointer;
+                transition: color 0.3s ease;
+            }
+
+            .joke-item h2:hover {
+                color: #e63946;
+            }
+
+            .joke-item p {
+                margin-bottom: 10px;
+                color: #6c757d;
+            }
+
+            .joke-item .like-count {
+                color: #e63946;
+                font-weight: bold;
+                font-size: 1.2em;
+            }
+
+            .pagination {
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                justify-content: center;
+                z-index: 10;
+            }
+
+            .pagination button {
+                background-color: #e63946;
+                color: #fff;
+                padding: 15px 30px;
+                border: none;
+                border-radius: 5px;
+                margin: 0 10px;
+                cursor: pointer;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            .pagination button:hover {
+                background-color: #c52935;
+                transform: scale(1.05);
+            }
+
+            .pagination button.disabled {
+                background-color: #ccc;
+                cursor: not-allowed;
+                transform: scale(1);
+            }
+
+            footer {
+                background-color: #ffffff;
+                padding: 30px;
+                text-align: center;
+                box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .footer-item {
+                display: inline-block;
+                margin: 0 25px;
+            }
+
+            .footer-item img {
+                width: 30px;
+                height: 30px;
+                margin-bottom: 10px;
+            }
+
+            .footer-item p {
+                font-size: 1em;
+                color: #6c757d;
+            }
+        </style>
+</head>
+
+<body>
+<header>
+    <nav>
+        <a href="index.html">热梗百科</a>
+        <a href="rank.html" class="active">热门梗榜</a>
+        <a href="edit_entry.html">创建词条</a>
+    </nav>
+</header>
+<main>
+    <div class="logo">
+        <span class="logo-text-red">热门</span><span class="logo-text-black">梗榜</span>
+    </div>
+    <div class="joke-list" id="jokeList"></div>
+</main>
+<div class="pagination" id="pagination">
+    <button onclick="changePage(-1)" id="prevButton" disabled>上一页</button>
+    <span id="pageInfo"></span>
+    <button onclick="changePage(1)" id="nextButton">下一页</button>
+</div>
+<footer>
+    <div class="footer-item">
+        <img src="https://img.alicdn.com/tfs/TB1xWYCrVY7gK0jSZFpXXaTkpXa-100-100.png" alt="信息图标">
+
+    </div>
+    <div class="footer-item">
+        <img src="https://img.alicdn.com/tfs/TB1GnZCrVY7gK0jSZFpXXaTkpXa-100-100.png" alt="联系图标">
+
+    </div>
+    <div class="footer-item">
+        <img src="https://img.alicdn.com/tfs/TB1HqkCrVY7gK0jSZFpXXaTkpXa-100-100.png" alt="帮助图标">
+
+    </div>
+</footer>
+<script>
+    const jokeListContainer = document.getElementById('jokeList');
+    const pageInfoElement = document.getElementById('pageInfo');
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+
+    let currentPage = 1;
+    let totalPages = 1;
+    // 定义每页显示的笑话数量
+    const itemsPerPage = 4;
+
+    function renderJokes(jokes) {
+        jokeListContainer.innerHTML = '';
+        jokes.forEach((joke, index) => {
+            const jokeItem = document.createElement('div');
+            jokeItem.className = 'joke-item';
+            // 计算正确的排名
+            const rank = (currentPage - 1) * itemsPerPage + index + 1;
+            jokeItem.innerHTML = `
+            <h3>排名: ${rank} - ${joke.name}</h3>
+            <p>${joke.description}</p>
+            <p class="like-count">点赞数: ${joke.likeCount}</p>
+        `;
+            jokeListContainer.appendChild(jokeItem);
+        });
+    }
+
+    function updatePagination() {
+        pageInfoElement.textContent = `第 ${currentPage} 页 / 共 ${totalPages} 页`;
+        prevButton.disabled = currentPage === 1;
+        nextButton.disabled = currentPage === totalPages;
+    }
+
+    function fetchHotJokes(page) {
+        const url = `/jokepedia_war_exploded/hotJokes?page=${page}`;
+        console.log('请求的 URL:', url);
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                totalPages = data.totalPages;
+                currentPage = data.currentPage;
+                renderJokes(data.data);
+                updatePagination();
+            })
+            .catch(error => {
+                console.error('请求热门梗数据时出错: ', error);
+            });
+    }
+
+    function changePage(direction) {
+        if ((direction === -1 && currentPage > 1) || (direction === 1 && currentPage < totalPages)) {
+            fetchHotJokes(currentPage + direction);
+        }
+    }
+
+    window.onload = () => {
+        fetchHotJokes(currentPage);
+    };
+
+</script>
+
+</body>
+
+</html>

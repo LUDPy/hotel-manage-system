@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>热梗百科</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #ffffff;
+            /* 增加内边距，使导航栏整体变大 */
+            padding: 40px 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            margin-right: 30px;
+            text-decoration: none;
+            color: #333;
+            /* 增加字体大小 */
+            font-weight: bold;
+            font-size: 22px;
+            transition: color 0.3s ease;
+        }
+
+        nav a.active {
+            color: #e63946;
+            border-bottom: 2px solid #e63946;
+            padding-bottom: 5px;
+        }
+
+        nav a:hover {
+            color: #e63946;
+        }
+
+        .product-menu {
+            cursor: pointer;
+            color: #333;
+            /* 增加字体大小 */
+            font-weight: bold;
+            font-size: 22px;
+            transition: color 0.3s ease;
+        }
+
+        .product-menu:hover {
+            color: #e63946;
+        }
+
+        .login {
+            color: #333;
+            /* 增加字体大小 */
+            font-weight: bold;
+            font-size: 22px;
+            transition: color 0.3s ease;
+        }
+
+        .login:hover {
+            color: #e63946;
+        }
+
+        .stats {
+            margin-top: 10px;
+            color: #6c757d;
+        }
+
+        .stats span {
+            font-weight: bold;
+        }
+
+        main {
+            flex-grow: 1;
+            position: relative;
+            z-index: 1;
+            padding: 30px;
+            background-color: #f4f4f9;
+        }
+
+        .logo {
+            font-size: 3em;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .logo-text-red {
+            color: #e63946;
+        }
+
+        .logo-text-black {
+            color: #333;
+        }
+
+        .search-bar-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border: 2px solid #333;
+            border-radius: 30px;
+            overflow: hidden;
+            width: 700px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-bar input {
+            padding: 20px;
+            width: 100%;
+            border: none;
+            outline: none;
+            font-size: 18px;
+        }
+
+        .search-btn {
+            padding: 20px 25px;
+            border: none;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        footer {
+            background-color: #ffffff;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-item {
+            display: inline-block;
+            margin: 0 25px;
+        }
+
+        .footer-item img {
+            width: 30px;
+            height: 30px;
+            margin-bottom: 10px;
+        }
+
+        .footer-item p {
+            font-size: 1em;
+            color: #6c757d;
+        }
+
+        /* 弹幕样式 */
+        .danmaku-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 100px);
+            overflow: hidden;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .danmaku {
+            position: absolute;
+            white-space: nowrap;
+            cursor: default;
+            will-change: transform;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <nav>
+        <a href="#" class="active">热梗百科</a>
+        <a href="rank.html">热门梗榜</a>
+        <!-- 修改此处链接，指向修改词条页面 -->
+        <a href="edit_entry.html">创建词条</a>
+    </nav>
+</header>
+<main>
+    <div class="logo">
+        <span class="logo-text-red">热梗</span><span class="logo-text-black">BecauseOfBeauty</span>
+    </div>
+    <div class="search-bar-container">
+        <form action="worddetail.html" method="get" class="search-bar">
+            <input type="text" name="name" placeholder="请输入热梗名称" required>
+            <button type="submit" class="search-btn">🔍</button>
+        </form>
+    </div>
+    <div class="danmaku-container"></div>
+</main>
+<footer>
+    <div class="footer-item">
+        <img src="https://img.alicdn.com/tfs/TB1xWYCrVY7gK0jSZFpXXaTkpXa-100-100.png" alt="信息图标">
+        <p>关于我们</p>
+    </div>
+    <div class="footer-item">
+        <img src="https://img.alicdn.com/tfs/TB1GnZCrVY7gK0jSZFpXXaTkpXa-100-100.png" alt="联系图标">
+        <p>联系我们</p>
+    </div>
+    <div class="footer-item">
+        <img src="https://img.alicdn.com/tfs/TB1HqkCrVY7gK0jSZFpXXaTkpXa-100-100.png" alt="帮助图标">
+        <p>帮助中心</p>
+    </div>
+</footer>
+<script>
+    function getRandomColor() {
+        return `#${Math.floor(Math.random() * 14423100).toString(16).padStart(6, '0')}`;
+    }
+
+    const danmakuContainer = document.querySelector('.danmaku-container');
+
+    function createDanmaku(name) {
+        const danmaku = document.createElement('div');
+        danmaku.className = 'danmaku';
+        danmaku.textContent = name;
+        danmaku.style.fontSize = `${Math.floor(Math.random() * 20) + 20}px`;
+        danmaku.style.color = getRandomColor();
+        danmaku.style.left = '100%';
+        danmaku.style.bottom = `${Math.floor(Math.random() * (danmakuContainer.offsetHeight - parseInt(danmaku.style.fontSize)))}px`;
+        danmakuContainer.appendChild(danmaku);
+
+        const duration = Math.random() * 5 + 8;
+        const animation = danmaku.animate(
+            [{ transform: 'translateX(0)' }, { transform: 'translateX(-100vw)' }],
+            { duration: duration * 1000, easing: 'linear', fill: 'forwards' }
+        );
+
+        danmaku.addEventListener('mouseenter', () => {
+            animation.pause();
+        });
+
+        danmaku.addEventListener('mouseleave', () => {
+            animation.play();
+        });
+
+        animation.onfinish = () => danmaku.remove();
+    }
+
+    function fetchDanmaku() {
+        const url = '/jokepedia_war_exploded/danmaku';
+        console.log('请求的 URL:', url);
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                createDanmaku(data.content);
+                setTimeout(fetchDanmaku, data.nextId === 1 ? 5000 : 1000);
+            })
+            .catch(error => {
+                console.error('请求弹幕数据时出错: ', error);
+            });
+    }
+
+    window.onload = fetchDanmaku;
+</script>
+</body>
+
+</html>

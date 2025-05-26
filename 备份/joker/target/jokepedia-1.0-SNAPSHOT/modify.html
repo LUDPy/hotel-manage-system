@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改热梗信息</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .modify-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 650px;
+            backdrop-filter: blur(10px);
+        }
+
+        .modify-container h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .modify-container label {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .modify-container input,
+        .modify-container textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .modify-container input:focus,
+        .modify-container textarea:focus {
+            border-color: #e63946;
+            outline: none;
+        }
+
+        .modify-container button {
+            background-color: #e63946;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: block;
+            width: 100%;
+        }
+
+        .modify-container button:hover {
+            background-color: #c52d3a;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+
+<body>
+<div class="modify-container">
+    <h1>修改热梗信息</h1>
+    <form action="/jokepedia_war_exploded/UpdateHotWordServlet" method="post" accept-charset="UTF-8" id="modifyForm">
+        <input type="hidden" id="id" name="id">
+        <label for="name">热梗名称:</label>
+        <input type="text" id="name" name="name">
+        <label for="description">热梗描述:</label>
+        <textarea id="description" name="description"></textarea>
+        <label for="Label">分类 ID:</label>
+        <input type="text" id="Label" name="Label">
+        <label for="like_count">点赞数:</label>
+        <input type="text" id="like_count" name="like_count">
+        <button type="submit">保存修改</button>
+    </form>
+</div>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+    if (id) {
+        document.getElementById('id').value = id;
+        // 使用 AJAX 从数据库获取热梗信息
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', `/jokepedia_war_exploded/GetHotWordServlet?id=${id}`, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                const hotWord = JSON.parse(xhr.responseText);
+                document.getElementById('name').value = hotWord.name;
+                document.getElementById('description').value = hotWord.description;
+                document.getElementById('Label').value = hotWord.Label;
+                document.getElementById('like_count').value = hotWord.like_count;
+            }
+        };
+        xhr.send();
+    }
+
+    const form = document.getElementById('modifyForm');
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', this.action, true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    window.location.href = 'index.html';
+
+                } else {
+                    alert('保存修改失败，请重试。');
+                }
+            }
+        };
+        const formData = new URLSearchParams(new FormData(this)).toString();
+        xhr.send(formData);
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>热梗详情</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #f4f4f9;
+    }
+
+    header {
+      background-color: #ffffff;
+      padding: 20px 40px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      margin-right: 30px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      font-size: 22px;
+      transition: color 0.3s ease;
+    }
+
+    nav a.active {
+      color: #e63946;
+      border-bottom: 2px solid #e63946;
+      padding-bottom: 5px;
+    }
+
+    nav a:hover {
+      color: #e63946;
+    }
+
+    .product-menu {
+      cursor: pointer;
+      color: #333;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .product-menu:hover {
+      color: #e63946;
+      transform: translateY(-2px);
+    }
+
+    .login {
+      color: #333;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .login:hover {
+      color: #e63946;
+      transform: translateY(-2px);
+    }
+
+    main {
+      flex-grow: 1;
+      position: relative;
+      z-index: 1;
+      padding: 30px;
+      background-color: #f4f4f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 3em;
+      margin-bottom: 40px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .logo-text-red {
+      color: #e63946;
+    }
+
+    .logo-text-black {
+      color: #333;
+    }
+
+    .word-detail-container {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 30px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .word-detail-container:hover {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .word-detail-container h1 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      display: inline-block;
+      margin-right: 30px;
+    }
+
+    .word-detail-container p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .like-button {
+      font-size: 24px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .like-button:hover {
+      transform: scale(1.1);
+      color: #e63946;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      background-color: #e63946;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .back-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .action-buttons {
+      display: inline-flex;
+      gap: 15px;
+      margin-left: 10px;
+      align-items: center;
+    }
+
+    .edit-button,
+    .delete-button {
+      background-color: #ffffff;
+      border: 2px solid #e63946;
+      border-radius: 50%;
+      padding: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      color: #e63946;
+    }
+
+    .edit-button:hover,
+    .delete-button:hover {
+      background-color: #e63946;
+      color: white;
+      transform: scale(1.1);
+    }
+
+    .more-less {
+      color: #e63946;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    footer {
+      background-color: #ffffff;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+
+    footer:hover {
+      box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .footer-item {
+      display: inline-block;
+      margin: 0 25px;
+      transition: transform 0.3s ease;
+    }
+
+    .footer-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .footer-item img {
+      width: 30px;
+      height: 30px;
+      margin-bottom: 10px;
+    }
+
+    .footer-item p {
+      font-size: 1em;
+      color: #6c757d;
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <nav>
+    <a href="#" class="active">热梗百科</a>
+    <a href="rank.html">热门梗榜</a>
+    <a href="edit_entry.html">创建词条</a>
+  </nav>
+</header>
+<main>
+  <div class="logo">
+    <span class="logo-text-red">热梗</span><span class="logo-text-black">BecauseOfBeauty</span>
+  </div>
+  <div id="wordDetail" class="word-detail-container">
+    <div>
+      <h1 id="name"></h1>
+      <div class="action-buttons">
+        <button id="modifyButton" class="edit-button">✎</button>
+        <button id="deleteButton" class="delete-button">❌</button>
+      </div>
+    </div>
+    <p><strong>介绍:</strong> <span id="description"></span></p>
+    <p><strong>点赞数:</strong> <span id="like_count"></span></p>
+    <p><strong>创建时间:</strong> <span id="createdAt"></span></p>
+    <span id="likeButton" class="like-button">❤️</span>
+    <span class="more-less" id="moreLess">显示更多</span>
+  </div>
+  <a href="index.html" class="back-button">返回主页</a>
+</main>
+<footer>
+  <div class="footer-item">
+    <img src="https://img.alicdn.com/tfs/TB1xWYCrVY7gK0jSZFpXXaTkpXa-100-100.png" alt="信息图标">
+    <p>关于我们</p>
+  </div>
+  <div class="footer-item">
+    <img src="https://img.alicdn.com/tfs/TB1GnZCrVY7gK0jSZFpXXaTkpXa-100-100.png" alt="联系图标">
+    <p>联系我们</p>
+  </div>
+  <div class="footer-item">
+    <img src="https://img.alicdn.com/tfs/TB1HqkCrVY7gK0jSZFpXXaTkpXa-100-100.png" alt="帮助图标">
+    <p>帮助中心</p>
+  </div>
+</footer>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get('name');
+
+    if (name) {
+      fetch(`/jokepedia_war_exploded/hotWordDetail?name=${encodeURIComponent(name)}`)
+              .then(response => response.json())
+              .then(data => {
+                if (data.error) {
+                  document.getElementById('name').textContent = data.error;
+                  document.getElementById('description').textContent = '';
+                  document.getElementById('like_count').textContent = '';
+                  document.getElementById('createdAt').textContent = '';
+                } else {
+                  document.getElementById('name').textContent = data.name;
+                  const fullDescription = data.description;
+                  document.getElementById('description').textContent = fullDescription.length > 200? fullDescription.slice(0, 200) + '...' : fullDescription;
+                  document.getElementById('like_count').textContent = data.like_count;
+                  document.getElementById('createdAt').textContent = data.createdAt;
+
+                  const likeButton = document.getElementById('likeButton');
+                  likeButton.addEventListener('click', function () {
+                    const id = data.id;
+                    fetch(`/jokepedia_war_exploded/likeWord?id=${encodeURIComponent(id)}`, {
+                      method: 'POST'
+                    })
+                            .then(response => {
+                              if (response.ok) {
+                                return response.json();
+                              } else {
+                                throw new Error('网络响应异常');
+                              }
+                            })
+                            .then(result => {
+                              if (result.success) {
+                                document.getElementById('like_count').textContent = result.like_count;
+                              } else {
+                                console.error('点赞失败');
+                              }
+                            })
+                            .catch(error => {
+                              console.error('请求点赞时出错: ', error);
+                            });
+                  });
+
+                  const deleteButton = document.getElementById('deleteButton');
+                  deleteButton.addEventListener('click', function () {
+                    const id = data.id;
+                    if (confirm('确定要删除这个热梗吗？')) {
+                      fetch(`/jokepedia_war_exploded/deleteWord?id=${encodeURIComponent(id)}`, {
+                        method: 'POST'
+                      })
+                              .then(response => response.json())
+                              .then(result => {
+                                if (result.success) {
+                                  alert('删除成功');
+                                  window.location.href = 'index.html';
+                                } else {
+                                  console.error('删除失败');
+                                }
+                              })
+                              .catch(error => {
+                                console.error('请求删除时出错: ', error);
+                              });
+                    }
+                  });
+
+                  const modifyButton = document.getElementById('modifyButton');
+                  modifyButton.addEventListener('click', function () {
+                    const id = data.id;
+                    window.location.href = `/jokepedia_war_exploded/modify.html?id=${id}`;
+                  });
+
+                  const moreLess = document.getElementById('moreLess');
+                  const description = document.getElementById('description');
+                  if (fullDescription.length > 200) {
+                    moreLess.style.display = 'inline-block';
+                    moreLess.addEventListener('click', function () {
+                      if (description.textContent === fullDescription) {
+                        description.textContent = fullDescription.slice(0, 200) + '...';
+                        moreLess.textContent = '显示更多';
+                      } else {
+                        description.textContent = fullDescription;
+                        moreLess.textContent = '收起';
+                      }
+                    });
+                  } else {
+                    moreLess.style.display = 'none';
+                  }
+                }
+              })
+              .catch(error => {
+                console.error('请求数据出错: ', error);
+                document.getElementById('name').textContent = '请求数据出错';
+                document.getElementById('description').textContent = '';
+                document.getElementById('like_count').textContent = '';
+                document.getElementById('createdAt').textContent = '';
+              });
+    } else {
+      document.getElementById('name').textContent = '未提供热梗名称';
+      document.getElementById('description').textContent = '';
+      document.getElementById('like_count').textContent = '';
+      document.getElementById('createdAt').textContent = '';
+    }
+  });
+</script>
+</body>
+
+</html>
+    
